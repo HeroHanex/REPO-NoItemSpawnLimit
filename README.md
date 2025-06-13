@@ -17,14 +17,15 @@ Using the [MoreShopItems](https://thunderstore.io/c/repo/p/GalaxyMods/MoreShopIt
 
 1. Ensure you have BepInEx installed:
     - Download [BepInEx 5](https://github.com/BepInEx/BepInEx/releases)
-   - Download and extract it to your game's root folder.
+    - Extract the zip file inside of your game's root folder.
 
-2. Download and extract the contents of the zip into your game’s `BepInEx/plugins` folder. The `NoItemSpawnLimit.dll` file should be inside of the folder `BepInEx/plugins/NoItemSpawnLimit`.
+2. Download the mod and extract the contents of the zip into your game’s `BepInEx/plugins` folder. The `NoItemSpawnLimit.dll` file should be inside of the folder `BepInEx/plugins/NoItemSpawnLimit`.
 3. Launch the game.
 
 ## Configuration
 
 - If you have the [REPOConfig](https://thunderstore.io/c/repo/p/nickklmao/REPOConfig/) mod. You can easily edit the configuration inside of the "MODS" tab and skip the steps below.
+- Launch the game at least once to generate the config file.
 - Edit the generated config file at `BepInEx/config/HeroHanex.NoItemSpawnLimit.cfg`.
 - Each item has its own configurable max spawn amount.
 - Set `RemoveSpawnLimit` to `true` to remove all limits, or `false` to use per-item settings.
