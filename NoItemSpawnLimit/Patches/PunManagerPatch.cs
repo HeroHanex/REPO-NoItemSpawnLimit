@@ -63,6 +63,13 @@ public class PunManagerPatch
 
             foreach (Item item in purchasedItems.ToList())
             {
+                // Ignore energy crystals
+                if (item.itemType == SemiFunc.itemType.power_crystal)
+                {
+                    Logger.LogInfo($"Ignoring item: {item.itemName}");
+                    continue;
+                }
+
                 Vector3 spawnPosition = spawnPoints[spawnIndex % spawnPoints.Count].transform.position;
                 SpawnItemAtPosition(item, spawnPosition);
                 purchasedItems.Remove(item);
