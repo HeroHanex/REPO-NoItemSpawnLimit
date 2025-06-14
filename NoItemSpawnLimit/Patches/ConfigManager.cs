@@ -11,6 +11,7 @@ public class ConfigManager
     private static ConfigEntry<bool>? RemoveSpawnLimit;
     private static readonly Dictionary<string, ConfigEntry<int>> itemMaxAmountConfigs = new();
     private const int defaultMaxAmount = 10000;
+    private static readonly char[] invalidChars = { '=', '\n', '\t', '"', '\'', '[', ']' };
 
     public static void Init(ConfigFile config)
     {
@@ -39,9 +40,11 @@ public class ConfigManager
             if (!itemMaxAmountConfigs.ContainsKey(kvp.Key))
             {
                 int itemMaxAmount = kvp.Value.maxAmount;
+                string sanitizedKey = SanitizeString(kvp.Key);
+
                 var entry = _config.Bind(
                     "ItemLimits",
-                    kvp.Key,
+                    sanitizedKey,
                     itemMaxAmount,
                     new ConfigDescription(
                         $"Max amount for item '{kvp.Key}'",
@@ -92,5 +95,15 @@ public class ConfigManager
         {
             item.Value.maxAmount = defaultMaxAmount;
         }
+    }
+
+    private static string SanitizeString(string input)
+    {
+        foreach (char c in invalidChars)
+        {
+            input = input.Replace(c, '_');
+        }
+
+        return input;
     }
 }
