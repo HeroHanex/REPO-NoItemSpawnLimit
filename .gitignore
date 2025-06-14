@@ -4,3 +4,4 @@ NoItemSpawnLimit/obj
 ReleasePackage
 *.bat
 *.zip
+*.dll
