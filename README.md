@@ -5,13 +5,14 @@
 [![Thunderstore Downloads](https://img.shields.io/thunderstore/dt/HeroHanex/NoItemSpawnLimit?style=for-the-badge&logo=thunderstore&logoColor=white)](https://thunderstore.io/c/repo/p/HeroHanex/NoItemSpawnLimit)
 <a href='https://ko-fi.com/B0B41G63RL' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/kofi6.png?v=6' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
 
-Using the [MoreShopItems](https://thunderstore.io/c/repo/p/GalaxyMods/MoreShopItems/) mod or other mods that add lots of items, but frustrated by the game's item spawn limits?  
-**NoItemSpawnLimit** is a mod for REPO that removes or customizes item spawn limits in the truck for all items—including those added by other mods.
+Using the [MoreShopItems](https://thunderstore.io/c/repo/p/GalaxyMods/MoreShopItems/) mod or other mods that add lots of items, but frustrated by the game's truck item spawn limits?  
+**NoItemSpawnLimit** is a host only mod for REPO that removes or customizes truck item spawn limits for all items—including those added by other mods.
 
 ## Features
 
-- Remove item spawn limits in the truck globally or set custom limits per item.
-- Configuration using sliders for each item.
+- Remove truck item spawn limits globally or set custom limits per item.
+- Configuration using sliders for each item with [REPOConfig](https://thunderstore.io/c/repo/p/nickklmao/REPOConfig/).
+- Host only.
 
 ## Installation
 
