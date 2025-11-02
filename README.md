@@ -25,7 +25,7 @@ Using the [MoreShopItems](https://thunderstore.io/c/repo/p/GalaxyMods/MoreShopIt
 
 ## Configuration
 
-- If you have the [REPOConfig](https://thunderstore.io/c/repo/p/nickklmao/REPOConfig/) mod. You can easily edit the configuration inside of the "MODS" in the main menu and skip the steps below.
+###### If you have the [REPOConfig](https://thunderstore.io/c/repo/p/nickklmao/REPOConfig/) mod. You can easily edit the configuration inside of the "MODS" in the main menu and skip the steps below.
 - Launch the game at least once to generate the config file.
 - Edit the generated config file at `BepInEx/config/HeroHanex.NoItemSpawnLimit.cfg`.
 - Each item has its own configurable max spawn amount.
@@ -35,7 +35,6 @@ Using the [MoreShopItems](https://thunderstore.io/c/repo/p/GalaxyMods/MoreShopIt
 
 - Works with both singleplayer and multiplayer.
 - Compatible with most other mods, including those that add new items.
-- Beta compatible.
 
 ## Support
 

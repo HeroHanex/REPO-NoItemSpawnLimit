@@ -1,8 +1,12 @@
 ## Releases
 
+### 1.0.5
+
+- Fixed stuck on loading with the new monster update.
+
 ### 1.0.4
 
-- Fixed bug where certain modded items with invalid names wouldn't spawn.
+- Fixed a bug where certain modded items with invalid names wouldn't spawn.
 
 ---
 
