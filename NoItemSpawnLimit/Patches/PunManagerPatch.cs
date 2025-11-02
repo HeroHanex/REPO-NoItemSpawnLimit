@@ -70,8 +70,13 @@ public class PunManagerPatch
                     continue;
                 }
 
+                // Spawn at a random spawn point
+                // Offset is different for lobby
                 Vector3 spawnPosition = spawnPoints[spawnIndex % spawnPoints.Count].transform.position;
-                SpawnItemAtPosition(item, spawnPosition);
+                Vector3 offset = RunManager.instance.levelCurrent == RunManager.instance.levelLobby ? SpawnOffsetLobby : SpawnOffset;
+                Vector3 adjustedPosition = spawnPosition + offset;
+
+                SpawnItemAtPosition(item, adjustedPosition);
                 purchasedItems.Remove(item);
                 spawnIndex++;
             }
@@ -85,24 +90,17 @@ public class PunManagerPatch
 
     static void SpawnItemAtPosition(Item item, Vector3 position)
     {
-        Vector3 adjustedPosition = position + SpawnOffset;
-
-        if (RunManager.instance.levelCurrent == RunManager.instance.levelLobby)
-        {
-            adjustedPosition = position + SpawnOffsetLobby;
-        }
-
         ShopManager.instance.itemRotateHelper.transform.parent = ShopManager.instance.transform;
         ShopManager.instance.itemRotateHelper.transform.localRotation = item.spawnRotationOffset;
         Quaternion rotation = ShopManager.instance.itemRotateHelper.transform.rotation;
 
         if (SemiFunc.IsMasterClient())
         {
-            PhotonNetwork.InstantiateRoomObject("Items/" + item.prefab.name, adjustedPosition, rotation, 0);
+            PhotonNetwork.InstantiateRoomObject("Items/" + item.prefab.ResourcePath, position, rotation, 0);
         }
         else if (!SemiFunc.IsMultiplayer())
         {
-            Object.Instantiate(item.prefab, adjustedPosition, rotation);
+            Object.Instantiate(item.prefab.Prefab, position, rotation);
         }
     }
 }

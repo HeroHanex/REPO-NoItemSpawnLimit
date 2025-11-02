@@ -16,6 +16,11 @@ public class LevelGeneratorPatch
             return;
         }
 
+        if (SemiFunc.IsNotMasterClient())
+        {
+            return;
+        }
+
         Logger.LogInfo("LevelGeneratorPatch: Level generation done. Loading item config...");
         ConfigManager.LoadMaxItemConfig();
     }
