@@ -96,7 +96,7 @@ public class PunManagerPatch
 
         if (SemiFunc.IsMasterClient())
         {
-            PhotonNetwork.InstantiateRoomObject("Items/" + item.prefab.ResourcePath, position, rotation, 0);
+            PhotonNetwork.InstantiateRoomObject(item.prefab.ResourcePath, position, rotation, 0);
         }
         else if (!SemiFunc.IsMultiplayer())
         {

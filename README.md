@@ -5,7 +5,7 @@
 [![Thunderstore Downloads](https://img.shields.io/thunderstore/dt/HeroHanex/NoItemSpawnLimit?style=for-the-badge&logo=thunderstore&logoColor=white)](https://thunderstore.io/c/repo/p/HeroHanex/NoItemSpawnLimit)
 <a href='https://ko-fi.com/B0B41G63RL' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/kofi6.png?v=6' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
 
-Using the [MoreShopItems](https://thunderstore.io/c/repo/p/GalaxyMods/MoreShopItems/) mod or other mods that add lots of items, but frustrated by the game's truck item spawn limits?  
+Using the [MoreShopItems Updated](https://thunderstore.io/c/repo/p/Jettcodey/MoreShopItems_Updated) mod or other mods that add lots of items, but frustrated by the game's truck item spawn limits?  
 **NoItemSpawnLimit** is a host only mod for REPO that removes or customizes truck item spawn limits for all items—including those added by other mods.
 
 ## Features
@@ -19,7 +19,6 @@ Using the [MoreShopItems](https://thunderstore.io/c/repo/p/GalaxyMods/MoreShopIt
 1. Ensure you have BepInEx installed:
     - Download [BepInEx 5](https://github.com/BepInEx/BepInEx/releases)
     - Extract the zip file inside of your game's root folder.
-
 2. Download the mod and extract the contents of the zip into your game’s `BepInEx/plugins` folder. The `NoItemSpawnLimit.dll` file should be inside of the folder `BepInEx/plugins/NoItemSpawnLimit`.
 3. Launch the game.
 

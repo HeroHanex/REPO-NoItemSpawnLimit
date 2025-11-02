@@ -1,8 +1,16 @@
 ## Releases
 
+### 1.0.6
+
+- Fixed stuck on loading when trying to spawn the rest of the items in multiplayer.
+
+---
+
 ### 1.0.5
 
 - Fixed stuck on loading with the new monster update.
+
+---
 
 ### 1.0.4
 
