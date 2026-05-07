@@ -3,6 +3,7 @@
 ### 1.0.7
 
 - Added a new config for LogLevel to remove unwanted logs in the terminal.
+- Updated for the Cosmetic Update
 
 ---
 
