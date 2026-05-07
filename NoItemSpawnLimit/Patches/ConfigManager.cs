@@ -28,7 +28,6 @@ public class ConfigManager
             "Logging level"
         );
         Logger.LogDebug("ConfigManager initialized.");
-        Logger.LogError(LogLevel == null ? "LogLevel config entry is null." : $"Current LogLevel: {LogLevel.Value}");
         config.Save();
     }
 
