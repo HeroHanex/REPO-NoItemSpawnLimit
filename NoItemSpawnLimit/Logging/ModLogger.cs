@@ -19,6 +19,30 @@ public static class ModLogger
         return level <= Patches.ConfigManager.CurrentLogLevel;
     }
 
+    public static void LogFatal(object data)
+    {
+        if (CanLog(ModLogLevel.Error))
+        {
+            Logger.LogFatal(data);
+        }
+    }
+
+    public static void LogError(object data)
+    {
+        if (CanLog(ModLogLevel.Error))
+        {
+            Logger.LogError(data);
+        }
+    }
+
+    public static void LogWarning(object data)
+    {
+        if (CanLog(ModLogLevel.Warning))
+        {
+            Logger.LogWarning(data);
+        }
+    }
+
     public static void LogInfo(object data)
     {
         if (CanLog(ModLogLevel.Info))
@@ -27,35 +51,11 @@ public static class ModLogger
         }
     }
 
-    public static void LogWarning(object data)
-    {
-        if (CanLog(ModLogLevel.Info))
-        {
-            Logger.LogWarning(data);
-        }
-    }
-
-    public static void LogError(object data)
-    {
-        if (CanLog(ModLogLevel.Info))
-        {
-            Logger.LogError(data);
-        }
-    }
-
     public static void LogDebug(object data)
     {
-        if (CanLog(ModLogLevel.Info))
+        if (CanLog(ModLogLevel.Debug))
         {
             Logger.LogDebug(data);
-        }
-    }
-
-    public static void LogFatal(object data)
-    {
-        if (CanLog(ModLogLevel.Info))
-        {
-            Logger.LogFatal(data);
         }
     }
 }
