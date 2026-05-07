@@ -1,5 +1,11 @@
 ## Releases
 
+### 1.0.7
+
+- Added a new config for LogLevel to remove unwanted logs in the terminal.
+
+---
+
 ### 1.0.6
 
 - Fixed stuck on loading when trying to spawn the rest of the items in multiplayer.
