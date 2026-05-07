@@ -1,6 +1,6 @@
 {
     "name": "NoItemSpawnLimit",
-    "version_number": "1.0.7",
+    "version_number": "1.0.8",
     "website_url": "https://github.com/HeroHanex/REPO-NoItemSpawnLimit",
     "description": "Removes or customizes truck item spawn limits for all items, including modded items. Host-only mod compatible with multiplayer.",
     "dependencies": [

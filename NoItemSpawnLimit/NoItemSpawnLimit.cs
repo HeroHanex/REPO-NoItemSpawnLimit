@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace NoItemSpawnLimit;
 
-[BepInPlugin("HeroHanex.NoItemSpawnLimit", "NoItemSpawnLimit", "1.0.7")]
+[BepInPlugin("HeroHanex.NoItemSpawnLimit", "NoItemSpawnLimit", "1.0.8")]
 public class NoItemSpawnLimit : BaseUnityPlugin
 {
     internal static NoItemSpawnLimit Instance { get; private set; } = null!;

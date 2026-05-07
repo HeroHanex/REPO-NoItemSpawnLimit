@@ -37,22 +37,22 @@ This is a **host-only** mod. Clients do not need to install it.
 
 1. Ensure you have BepInEx installed:
     - Download [BepInEx 5](https://github.com/BepInEx/BepInEx/releases)
-    - Extract the zip file inside of your game's root folder.
-2. Download the mod and extract the contents of the zip into your game’s `BepInEx/plugins` folder. The `NoItemSpawnLimit.dll` should be placed inside `BepInEx/plugins/NoItemSpawnLimit`.
-3. Launch the game.
+    - Extract the zip file inside of your game's root folder
+2. Download the mod and extract the contents of the zip into your game’s `BepInEx/plugins` folder. The `NoItemSpawnLimit.dll` should be placed inside `BepInEx/plugins/NoItemSpawnLimit`
+3. Launch the game
 
 ## Configuration
 
 ###### If you have the [REPOConfig](https://thunderstore.io/c/repo/p/nickklmao/REPOConfig/) mod. You can easily edit the configuration inside of the "MODS" in the main menu and skip the steps below.
-- Launch the game at least once to generate the config file.
-- Edit the generated config file at `BepInEx/config/HeroHanex.NoItemSpawnLimit.cfg`.
-- Each item has its own configurable max spawn amount.
-- Set `RemoveSpawnLimit` to `true` to remove all limits, or `false` to use per-item settings.
+- Launch the game at least once to generate the config file
+- Edit the generated config file at `BepInEx/config/HeroHanex.NoItemSpawnLimit.cfg`
+- Each item has its own configurable max spawn amount
+- Set `RemoveSpawnLimit` to `true` to remove all limits, or `false` to use per-item settings
 
 ## Compatibility
 
-- Works with both singleplayer and multiplayer.
-- Compatible with most other mods, including those that add new items.
+- Works with both singleplayer and multiplayer
+- Compatible with most other mods, including those that add new items
 - Host-only mod (clients do not need it installed)
 
 ## Known Limitations
@@ -63,7 +63,7 @@ This is a **host-only** mod. Clients do not need to install it.
 
 ## Support
 
-- [GitHub Issues](https://github.com/HeroHanex/REPO-NoItemSpawnLimit/issues) for bug reports and suggestions.
+- [GitHub Issues](https://github.com/HeroHanex/REPO-NoItemSpawnLimit/issues) for bug reports and suggestions
 
 ## Developer Contact
 

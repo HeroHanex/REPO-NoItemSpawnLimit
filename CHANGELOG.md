@@ -1,48 +1,54 @@
 ## Releases
 
+### 1.0.8
+
+- Fixed LogLevel not showing Error or Warning logs when set to either of them
+
+---
+
 ### 1.0.7
 
-- Added a new config for LogLevel to remove unwanted logs in the terminal.
+- Added a new config for LogLevel to remove unwanted logs in the terminal
 - Updated for the Cosmetic Update
 
 ---
 
 ### 1.0.6
 
-- Fixed stuck on loading when trying to spawn the rest of the items in multiplayer.
+- Fixed stuck on loading when trying to spawn the rest of the items in multiplayer
 
 ---
 
 ### 1.0.5
 
-- Fixed stuck on loading with the new monster update.
+- Fixed stuck on loading with the new monster update
 
 ---
 
 ### 1.0.4
 
-- Fixed a bug where certain modded items with invalid names wouldn't spawn.
+- Fixed a bug where certain modded items with invalid names wouldn't spawn
 
 ---
 
 ### 1.0.3
 
-- Removed Energy Crystals from spawning during the Lobby level.
+- Removed Energy Crystals from spawning during the Lobby level
 
 ---
 
 ### 1.0.2
 
-- Updated README.
+- Updated README
 
 ---
 
 ### 1.0.1
 
-- Updated README.
+- Updated README
 
 ---
 
 ### 1.0.0
 
-- Initial Release.
+- Initial Release
