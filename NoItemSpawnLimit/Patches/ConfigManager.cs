@@ -1,23 +1,34 @@
+using System;
 using System.Collections.Generic;
 using BepInEx.Configuration;
-using BepInEx.Logging;
+using NoItemSpawnLimit.Logging;
+using SingularityGroup.HotReload;
+using Logger = NoItemSpawnLimit.Logging.ModLogger;
 
 namespace NoItemSpawnLimit.Patches;
 
 public class ConfigManager
 {
-    private static readonly ManualLogSource Logger = BepInEx.Logging.Logger.CreateLogSource("NoItemSpawnLimit");
     private static ConfigFile? _config;
     private static ConfigEntry<bool>? RemoveSpawnLimit;
     private static readonly Dictionary<string, ConfigEntry<int>> itemMaxAmountConfigs = new();
-    private const int defaultMaxAmount = 10000;
+    private static ConfigEntry<ModLogLevel>? LogLevel;
+    public static ModLogLevel CurrentLogLevel => LogLevel?.Value ?? ModLogLevel.Info;
+    private const int DefaultMaxAmount = 10000;
     private static readonly char[] invalidChars = { '=', '\n', '\t', '"', '\'', '[', ']' };
 
     public static void Init(ConfigFile config)
     {
         _config = config;
         RemoveSpawnLimit = config.Bind("General", "RemoveSpawnLimit", true, "Remove item spawn limit");
-        Logger.LogInfo("ConfigManager initialized.");
+        LogLevel = config.Bind(
+            "General",
+            "LogLevel",
+            ModLogLevel.Info,
+            "Logging level"
+        );
+        Logger.LogDebug("ConfigManager initialized.");
+        Logger.LogError(LogLevel == null ? "LogLevel config entry is null." : $"Current LogLevel: {LogLevel.Value}");
         config.Save();
     }
 
@@ -25,13 +36,12 @@ public class ConfigManager
     {
         if (_config == null)
         {
-            Logger.LogError("ConfigManager: _config is null. Init() wasn't called.");
-            return;
+            throw new InvalidOperationException("ConfigManager not initialized. Call Init() before loading config.");
         }
 
         if (StatsManager.instance == null || StatsManager.instance.itemDictionary.Count == 0)
         {
-            Logger.LogWarning("StatsManager or itemDictionary is not ready. It should be ready once loaded into a level.");
+            Logger.LogDebug("StatsManager or itemDictionary is not ready. It should be ready once loaded into a level.");
             return;
         }
 
@@ -48,7 +58,7 @@ public class ConfigManager
                     itemMaxAmount,
                     new ConfigDescription(
                         $"Max amount for item '{kvp.Key}'",
-                        new AcceptableValueRange<int>(0, defaultMaxAmount)
+                        new AcceptableValueRange<int>(0, DefaultMaxAmount)
                     )
                 );
                 itemMaxAmountConfigs[kvp.Key] = entry;
@@ -57,15 +67,14 @@ public class ConfigManager
 
         if (RemoveSpawnLimit == null)
         {
-            RemoveSpawnLimit = _config.Bind("General", "RemoveSpawnLimit", true, "Remove item spawn limit");
-            Logger.LogInfo("RemoveSpawnLimit config was null. Created RemoveSpawnLimit config.");
+            throw new InvalidOperationException("RemoveSpawnLimit config entry is null. This should not happen if Init() was called correctly.");
         }
 
         _config.Save();
 
         if (RemoveSpawnLimit.Value)
         {
-            Logger.LogInfo($"RemoveSpawnLimit is enabled. Applying predefined config of {defaultMaxAmount} to all items...");
+            Logger.LogInfo($"RemoveSpawnLimit is enabled. Applying predefined config of {DefaultMaxAmount} to all items...");
             ApplyPredefinedConfig();
         }
         else
@@ -82,7 +91,7 @@ public class ConfigManager
             if (!StatsManager.instance.itemDictionary.TryGetValue(itemMaxAmountConfig.Key, out var value))
             {
                 Logger.LogWarning($"Item '{itemMaxAmountConfig.Key}' not found in itemDictionary.");
-                return;
+                continue;
             }
 
             value.maxAmount = itemMaxAmountConfig.Value.Value;
@@ -93,7 +102,7 @@ public class ConfigManager
     {
         foreach (var item in StatsManager.instance.itemDictionary)
         {
-            item.Value.maxAmount = defaultMaxAmount;
+            item.Value.maxAmount = DefaultMaxAmount;
         }
     }
 

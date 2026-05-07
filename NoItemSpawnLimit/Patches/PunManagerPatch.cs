@@ -3,18 +3,17 @@ using System.Linq;
 using UnityEngine;
 using HarmonyLib;
 using Photon.Pun;
-using BepInEx.Logging;
+using Logger = NoItemSpawnLimit.Logging.ModLogger;
 
 namespace NoItemSpawnLimit.Patches;
 
 [HarmonyPatch(typeof(PunManager))]
 public class PunManagerPatch
 {
-    private static readonly ManualLogSource Logger = BepInEx.Logging.Logger.CreateLogSource("NoItemSpawnLimit");
     private const float SpawnOffsetFacing = 7.0f;
     private const float SpawnOffsetHeight = 2.0f;
-    private static Vector3 SpawnOffset = new Vector3(0.0f, SpawnOffsetHeight, SpawnOffsetFacing);
-    private static Vector3 SpawnOffsetLobby = new Vector3(SpawnOffsetFacing, SpawnOffsetHeight, 0.0f);
+    private static readonly Vector3 SpawnOffset = new Vector3(0.0f, SpawnOffsetHeight, SpawnOffsetFacing);
+    private static readonly Vector3 SpawnOffsetLobby = new Vector3(SpawnOffsetFacing, SpawnOffsetHeight, 0.0f);
 
     [HarmonyPrefix, HarmonyPatch(nameof(PunManager.TruckPopulateItemVolumes))]
     static void TruckPopulateItemVolumesPatch(PunManager __instance)
@@ -29,7 +28,7 @@ public class PunManagerPatch
         List<ItemVolume> shelfVolumes = __instance.itemManager.itemVolumes;
         List<Item> purchasedItems = __instance.itemManager.purchasedItems;
 
-        Logger.LogInfo($"Initial shelfVolumes: {shelfVolumes.Count}, purchasedItems: {purchasedItems.Count}");
+        Logger.LogDebug($"Initial shelfVolumes: {shelfVolumes.Count}, purchasedItems: {purchasedItems.Count}");
 
         // Fill shelves as normal
         while (shelfVolumes.Count > 0 && purchasedItems.Count > 0)
@@ -52,7 +51,7 @@ public class PunManagerPatch
                 break;
         }
 
-        Logger.LogInfo($"After shelf fill: shelfVolumes: {shelfVolumes.Count}, purchasedItems: {purchasedItems.Count}");
+        Logger.LogDebug($"After shelf fill: shelfVolumes: {shelfVolumes.Count}, purchasedItems: {purchasedItems.Count}");
 
         // Spawn remaining items at truck spawn points
         if (purchasedItems.Count > 0)
@@ -72,6 +71,13 @@ public class PunManagerPatch
 
                 // Spawn at a random spawn point
                 // Offset is different for lobby
+
+                if (spawnPoints.Count == 0)
+                {
+                    Logger.LogError("No spawn points found.");
+                    return;
+                }
+                
                 Vector3 spawnPosition = spawnPoints[spawnIndex % spawnPoints.Count].transform.position;
                 Vector3 offset = RunManager.instance.levelCurrent == RunManager.instance.levelLobby ? SpawnOffsetLobby : SpawnOffset;
                 Vector3 adjustedPosition = spawnPosition + offset;

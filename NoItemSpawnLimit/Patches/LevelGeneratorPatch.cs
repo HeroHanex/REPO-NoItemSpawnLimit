@@ -1,13 +1,11 @@
 using HarmonyLib;
-using BepInEx.Logging;
+using Logger = NoItemSpawnLimit.Logging.ModLogger;
 
 namespace NoItemSpawnLimit.Patches;
 
 [HarmonyPatch(typeof(LevelGenerator))]
 public class LevelGeneratorPatch
 {
-    private static readonly ManualLogSource Logger = BepInEx.Logging.Logger.CreateLogSource("NoItemSpawnLimit");
-
     [HarmonyPostfix, HarmonyPatch(nameof(LevelGenerator.GenerateDone))]
     static void GenerateDonePatch(LevelGenerator __instance)
     {
@@ -21,7 +19,7 @@ public class LevelGeneratorPatch
             return;
         }
 
-        Logger.LogInfo("LevelGeneratorPatch: Level generation done. Loading item config...");
+        Logger.LogDebug("LevelGeneratorPatch: Level generation done. Loading item config...");
         ConfigManager.LoadMaxItemConfig();
     }
 }
