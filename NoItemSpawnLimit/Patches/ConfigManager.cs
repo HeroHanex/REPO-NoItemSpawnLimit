@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using BepInEx.Configuration;
 using NoItemSpawnLimit.Logging;
-using SingularityGroup.HotReload;
 using Logger = NoItemSpawnLimit.Logging.ModLogger;
 
 namespace NoItemSpawnLimit.Patches;
