@@ -15,8 +15,8 @@ public class PunManagerPatch
     private static readonly Vector3 SpawnOffset = new Vector3(0.0f, SpawnOffsetHeight, SpawnOffsetFacing);
     private static readonly Vector3 SpawnOffsetLobby = new Vector3(SpawnOffsetFacing, SpawnOffsetHeight, 0.0f);
 
-    [HarmonyPrefix, HarmonyPatch(nameof(PunManager.TruckPopulateItemVolumes))]
-    static void TruckPopulateItemVolumesPatch(PunManager __instance)
+    [HarmonyPrefix, HarmonyPatch(nameof(PunManager.TruckPopulateItemVolumes), [typeof(List<PunManager.ItemSpawn>)])]
+    static void TruckPopulateItemVolumesPatch(PunManager __instance, List<PunManager.ItemSpawn> _spawns)
     {
         ItemManager.instance.spawnedItems.Clear();
 
@@ -24,6 +24,10 @@ public class PunManagerPatch
         {
             return;
         }
+        
+        StatsManager.instance.playerInventorySpot1Taken.Clear();
+        StatsManager.instance.playerInventorySpot2Taken.Clear();
+        StatsManager.instance.playerInventorySpot3Taken.Clear();
 
         List<ItemVolume> shelfVolumes = __instance.itemManager.itemVolumes;
         List<Item> purchasedItems = __instance.itemManager.purchasedItems;
@@ -40,7 +44,7 @@ public class PunManagerPatch
                 ItemVolume slot = shelfVolumes.Find(v => v.itemVolume == item.itemVolume);
                 if (slot != null)
                 {
-                    __instance.SpawnItem(item, slot);
+                    __instance.SpawnItem(item, slot, _spawns);
                     shelfVolumes.Remove(slot);
                     purchasedItems.RemoveAt(i);
                     placed = true;
@@ -92,6 +96,8 @@ public class PunManagerPatch
         {
             Object.Destroy(v.gameObject);
         }
+
+        __instance.itemManager.itemVolumes.Clear();
     }
 
     static void SpawnItemAtPosition(Item item, Vector3 position)

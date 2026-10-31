@@ -1,5 +1,11 @@
 ## Releases
 
+### 1.0.9
+
+- Updated for the Sunstone Update
+
+---
+
 ### 1.0.8
 
 - Fixed LogLevel not showing Error or Warning logs when set to either of them

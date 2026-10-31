@@ -1,8 +1,6 @@
 # NoItemSpawnLimit
 
 [![GitHub](https://img.shields.io/badge/GitHub-NoItemSpawnLimit-brightgreen?style=for-the-badge&logo=GitHub)](https://github.com/HeroHanex/REPO-NoItemSpawnLimit/)
-[![Thunderstore Version](https://img.shields.io/thunderstore/v/HeroHanex/NoItemSpawnLimit?style=for-the-badge&logo=thunderstore&logoColor=white)](https://thunderstore.io/c/repo/p/HeroHanex/NoItemSpawnLimit)
-[![Thunderstore Downloads](https://img.shields.io/thunderstore/dt/HeroHanex/NoItemSpawnLimit?style=for-the-badge&logo=thunderstore&logoColor=white)](https://thunderstore.io/c/repo/p/HeroHanex/NoItemSpawnLimit)
 
 Using the [MoreShopItems Updated](https://thunderstore.io/c/repo/p/Jettcodey/MoreShopItems_Updated) mod or other mods that add lots of items, but frustrated by the game's truck item spawn limits?  
 **NoItemSpawnLimit** is a host only mod for REPO that removes or customizes truck item spawn limits for all items—including those added by other mods.
